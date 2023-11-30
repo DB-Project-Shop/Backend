@@ -1,0 +1,38 @@
+version: '3'
+services:
+  nest:
+    container_name: nest
+    image: nest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '8080:8080'
+    depends_on:
+      - mysql
+    environment:
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_S3_BUCKET_NAME=${AWS_S3_BUCKET_NAME}
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    command: ['/usr/wait-for-it.sh', 'mysql:3306', '--', 'npm', 'start']
+
+  mysql:
+    container_name: mysql
+    image: mysql:8.0
+    env_file:
+      - .env
+    environment:
+      - MYSQL_DATABASE=${DB_NAME}
+      - MYSQL_USER=${DB_USER}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    volumes:
+      - mysql:/var/lib/mysql
+    ports:
+      - '3306:3306'
+
+volumes:
+  mysql:
