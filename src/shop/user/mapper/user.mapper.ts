@@ -5,12 +5,11 @@ import { UserResponseDto } from '../dto/user-response.dto';
 
 @Injectable()
 export class UserMapper {
-  DtoToEntity({ userid, password, address }: RegisterUserRequestDto): User {
+  DtoToEntity({ userid, password }: RegisterUserRequestDto): User {
     const user = new User();
 
     user.userid = userid;
     user.password = password;
-    user.address = address;
 
     return user;
   }

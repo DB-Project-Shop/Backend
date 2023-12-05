@@ -1,3 +1,3 @@
 export class UserLoginResponseDto {
-  userId: number;
+  userid: number;
 }

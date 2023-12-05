@@ -19,7 +19,7 @@ export class UserService {
     private readonly userMapper: UserMapper,
   ) {}
 
-  async registerUser(
+  async registerUCustomer(
     registerUserRequestDto: RegisterUserRequestDto,
   ): Promise<User> {
     const isUserIDExist = await this.userRepository.findOne({
@@ -34,7 +34,9 @@ export class UserService {
     return await this.userRepository.save(newUserEntity);
   }
 
-  async loginUser(loginUserDto: LoginUserDto): Promise<UserLoginResponseDto> {
+  async loginCustomer(
+    loginUserDto: LoginUserDto,
+  ): Promise<UserLoginResponseDto> {
     // 유저 유효성 체크
     const user = await this.userRepository.findOne({
       where: { userid: loginUserDto.userid },
@@ -45,7 +47,7 @@ export class UserService {
     // 로그인 체크 (Directly compare the plain text passwords)
     if (user && loginUserDto.password === user.password) {
       const response: UserLoginResponseDto = {
-        userId: user.id,
+        userid: user.id,
       };
       return response;
     } else {
