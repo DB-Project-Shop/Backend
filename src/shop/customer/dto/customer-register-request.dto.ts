@@ -1,8 +1,8 @@
 import { IsNotEmpty } from 'class-validator';
 
-export class RegisterUserRequestDto {
+export class CustomerRegisterRequestDto {
   @IsNotEmpty()
-  userid: string;
+  CustomerId: string;
 
   @IsNotEmpty()
   password: string;

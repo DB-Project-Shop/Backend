@@ -1,6 +1,6 @@
 import { HttpStatus } from '@nestjs/common';
-import { CustomException } from '../../../global/exception/customException';
-import { ErrorCode } from '../../../global/exception/errorCode/Errorcode';
+import { CustomException } from '../customException';
+import { ErrorCode } from '../errorCode/Errorcode';
 
 export class UserIdAlreadyExistsException extends CustomException {
   constructor() {
