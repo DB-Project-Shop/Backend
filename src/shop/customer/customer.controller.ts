@@ -5,14 +5,14 @@ import { CustomerRegisterRequestDto } from './dto/customer-register-request.dto'
 import { CustomerLoginRequestDto } from './dto/customer-login-request.dto';
 import { Response } from 'express';
 
-@Controller('shop')
+@Controller('shop/customers')
 export class CustomerController {
   constructor(
     private readonly customerService: CustomerService,
     private readonly customerMapper: CustomerMapper,
   ) {}
 
-  @Post('customers/register')
+  @Post('/register')
   async registerCutomer(
     @Body() customerRegisterRequestDto: CustomerRegisterRequestDto,
     @Res() res: Response,
@@ -24,7 +24,7 @@ export class CustomerController {
     res.status(HttpStatus.CREATED).json(response);
   }
 
-  @Post('customers/login')
+  @Post('/login')
   async loginCustomer(
     @Body() customerLoginRequestDto: CustomerLoginRequestDto,
     @Res() res: Response,
