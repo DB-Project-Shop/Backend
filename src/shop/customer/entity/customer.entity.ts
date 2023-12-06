@@ -11,7 +11,4 @@ export class Customer extends BaseEntity {
 
   @Column()
   password: string;
-
-  @Column()
-  address: string;
 }
