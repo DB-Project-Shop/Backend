@@ -33,6 +33,10 @@ export class CustomerService {
     const newCustomerEntity = this.customerMapper.DtoToEntity(
       customerRegisterRequestDto,
     );
+    newCustomerEntity.nickname = customerRegisterRequestDto.nickname;
+    newCustomerEntity.address = customerRegisterRequestDto.address;
+    newCustomerEntity.paymentCard = customerRegisterRequestDto.paymentCard;
+    newCustomerEntity.accountNumber = customerRegisterRequestDto.accountNumber;
     return await this.customerRepository.save(newCustomerEntity);
   }
 
@@ -50,6 +54,7 @@ export class CustomerService {
     if (customer && customerLoginRequestDto.password === customer.password) {
       const response: CustomerLoginResponseDto = {
         CustomerId: customer.id,
+        nickname: customer.nickname,
       };
       return response;
     } else {

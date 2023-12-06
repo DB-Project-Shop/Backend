@@ -6,4 +6,16 @@ export class CustomerRegisterRequestDto {
 
   @IsNotEmpty()
   password: string;
+
+  @IsNotEmpty()
+  nickname: string;
+
+  @IsNotEmpty()
+  address: string;
+
+  @IsNotEmpty()
+  paymentCard: string;
+
+  @IsNotEmpty()
+  accountNumber: string;
 }

@@ -5,11 +5,15 @@ import { CustomerRegisterResponseDto } from '../dto/customer-register-response.d
 
 @Injectable()
 export class CustomerMapper {
-  DtoToEntity({ CustomerId, password }: CustomerRegisterRequestDto): Customer {
+  DtoToEntity(dto: CustomerRegisterRequestDto): Customer {
     const customer = new Customer();
 
-    customer.CustomerId = CustomerId;
-    customer.password = password;
+    customer.CustomerId = dto.CustomerId;
+    customer.password = dto.password;
+    customer.nickname = dto.nickname;
+    customer.address = dto.address;
+    customer.paymentCard = dto.paymentCard;
+    customer.accountNumber = dto.accountNumber;
 
     return customer;
   }
