@@ -11,17 +11,17 @@ export class ProductService {
     @InjectRepository(Product)
     private readonly productRepository: Repository<Product>,
     @InjectRepository(Category)
-    private readonly categoryRepository: Repository<Category>
+    private readonly categoryRepository: Repository<Category>,
   ) {}
 
   // 상품 등록
   async createProduct(createProductDto: CreateProductDto): Promise<Product> {
-    const category = await this.categoryRepository.findOne({ 
-        where: { id: createProductDto.categoryId } 
-      });
-      if (!category) {
-        throw new Error('Category not found');
-      }
+    const category = await this.categoryRepository.findOne({
+      where: { id: createProductDto.categoryId },
+    });
+    if (!category) {
+      throw new Error('Category not found');
+    }
 
     const product = this.productRepository.create({
       ...createProductDto,
@@ -30,4 +30,8 @@ export class ProductService {
     return this.productRepository.save(product);
   }
 
+  // 상품 전체 조회
+  async findAllProducts(): Promise<Product[]> {
+    return this.productRepository.find();
+  }
 }
