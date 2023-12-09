@@ -1,7 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { CategoryService } from './shop/product/category/category.service';
-import { typeOrmConfig } from 'typeOrm.config';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);

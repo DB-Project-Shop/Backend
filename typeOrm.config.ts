@@ -3,6 +3,7 @@ import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { config } from 'dotenv';
 import { Admin } from 'src/shop/admin/entity/admin.entity';
 import { Customer } from 'src/shop/customer/entity/customer.entity';
+import { Order } from 'src/shop/order/entity/order.entity';
 import { Category } from 'src/shop/product/category/entity/category.entity';
 import { Product } from 'src/shop/product/entity/product.entity';
 
@@ -17,6 +18,6 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
   username: configService.get('DB_USER'),
   password: configService.get('DB_PASSWORD'),
   database: configService.get('DB_NAME'),
-  entities: [Customer, Admin, Product, Category],
-  synchronize: true,
+  entities: [Customer, Admin, Product, Category, Order],
+  synchronize: false,
 };

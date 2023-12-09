@@ -6,6 +6,7 @@ import { AdminModule } from './shop/admin/admin.module';
 import { CategoryModule } from './shop/product/category/category.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { typeOrmConfig } from 'typeOrm.config';
+import { OrderModule } from './shop/order/order.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { typeOrmConfig } from 'typeOrm.config';
     MysqlModule,
     AdminModule,
     CategoryModule,
+    OrderModule,
   ],
 })
 export class AppModule {}
