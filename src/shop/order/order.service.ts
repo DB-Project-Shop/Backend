@@ -55,4 +55,9 @@ export class OrderService {
       },
     };
   }
+
+  // 주문 전체 조회
+  async findAllOrders(): Promise<Order[]> {
+    return await this.orderRepository.find();
+  }
 }

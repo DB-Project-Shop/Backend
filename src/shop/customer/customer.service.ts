@@ -61,4 +61,9 @@ export class CustomerService {
       throw new LoginInvalidPasswordException();
     }
   }
+
+  // 고객 전체 조회
+  async findAllCustomers(): Promise<Customer[]> {
+    return await this.customerRepository.find();
+  }
 }

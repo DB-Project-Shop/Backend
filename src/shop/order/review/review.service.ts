@@ -51,4 +51,9 @@ export class ReviewService {
       },
     };
   }
+
+  // 리뷰 전체 조회
+async findAllReviews(): Promise<Review[]> {
+  return await this.reviewRepository.find();
+  }
 }
